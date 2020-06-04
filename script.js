@@ -33,7 +33,18 @@ let map;
 let infowindow;
 
 function showInfo(position, data) {
-  let content = data.map(x => `<span style="font-weight: 900">${x.name}:</span> <span>${x.value}</span>`).join("<br>")
+  const names = new Set([])
+
+
+  let content = data.filter((x)=>{
+    if(names.has(x.name )){
+      return false
+    }
+    else {
+      names.add(x.name)
+      return true
+    }
+  }).map(x => `<span style="font-weight: 900">${x.name}:</span> <span>${x.value}</span>`).join("<br>")
   infowindow.setContent(`<div >${content}</div>`)
   infowindow.setPosition(position)
   infowindow.open(map)
