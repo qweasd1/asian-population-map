@@ -14,10 +14,10 @@ function chooseColor(level) {
 
 COLOR_PALETE = {
   "1": "#fce5cd",
-  "2": "#f9cb9c",
-  "3": "#e69138",
-  "4": "#b45f06",
-  "5": "#783f04",
+  "2": "#f98b3e",
+  "3": "#e64c1b",
+  "4": "#973b05",
+  "5": "#291403",
 }
 
 LEVEL_LEGEND = {
