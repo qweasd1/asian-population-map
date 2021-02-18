@@ -13,11 +13,11 @@ function chooseColor(level) {
 
 
 COLOR_PALETE = {
-  "1": "#fce5cd",
-  "2": "#f98b3e",
-  "3": "#e64c1b",
-  "4": "#973b05",
-  "5": "#291403",
+  "1": "rgba(255,244,21,1)",
+  "2": "#f9aa0f",
+  "3": "#bf800f",
+  "4": "#935f0f",
+  "5": "#853704",
 }
 
 LEVEL_LEGEND = {
@@ -100,11 +100,11 @@ async function initMap() {
       case "Polygon":
         const region = new google.maps.Polygon({
           paths: district.coordinates,
-          strokeColor: '#FFC107',
+          strokeColor: '#515151',
           strokeOpacity: 0.8,
-          strokeWeight: 2,
+          strokeWeight: 1,
           fillColor: color,
-          fillOpacity: 0.35
+          fillOpacity: 0.5
         });
         region.setMap(map);
         const state = {
@@ -119,14 +119,16 @@ async function initMap() {
         for (let coords of district.coordinates) {
           const region = new google.maps.Polygon({
             paths: coords,
-            strokeColor: '#FFC107',
+            strokeColor: '#515151',
             strokeOpacity: 0.8,
-            strokeWeight: 2,
+            strokeWeight: 1,
             fillColor: color,
             fillOpacity: 1
           });
           region.setMap(map);
-
+          region.addListener("click", (event) => {
+            showInfo(event.latLng, district.data)
+          })
         }
         break
       default:
